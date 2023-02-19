@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         GetButtons();
+        AddListeners();
     }
 
     void GetButtons()
@@ -23,5 +24,19 @@ public class GameManager : MonoBehaviour
             btns.Add(objects[i].GetComponent<Button>());
             btns[i].image.sprite = bgImage;
         }
+    }
+
+    void AddListeners()
+    {
+        foreach (Button btn in btns)
+        {
+            btn.onClick.AddListener(() => PickAPuzzle());
+        }
+    }
+
+    public void PickAPuzzle()
+    {
+        string name = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
+        Debug.Log("You Are Clicking A Button Named " + name);
     }
 }
