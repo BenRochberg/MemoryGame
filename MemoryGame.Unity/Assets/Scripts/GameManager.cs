@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         {
             btns.Add(objects[i].GetComponent<Button>());
             btns[i].image.sprite = bgImage;
+            LeanTween.alpha(btns[i].GetComponent<RectTransform>(), 1f, 0.5f).setDelay(0.5f);
         }
     }
 
@@ -99,13 +100,13 @@ public class GameManager : MonoBehaviour
 
         if (firstGuessPuzzle == secondGuessPuzzle)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
 
             btns[firstGuessIndex].interactable = false;
             btns[secondGuessIndex].interactable = false;
 
-            btns[firstGuessIndex].image.color = new Color(0, 0, 0, 0);
-            btns[secondGuessIndex].image.color = new Color(0, 0, 0, 0);
+            LeanTween.alpha(btns[firstGuessIndex].GetComponent<RectTransform>(), 0f, 0.5f);
+            LeanTween.alpha(btns[secondGuessIndex].GetComponent<RectTransform>(), 0f, 0.5f);
 
             CheckIfTheGameIsFinished();
         }
