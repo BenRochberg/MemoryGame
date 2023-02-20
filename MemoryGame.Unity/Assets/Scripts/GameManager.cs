@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -133,7 +134,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game Finished!");
             Debug.Log("It took you " + countGuesses + " many guess(es) to finish the game!");
             finishedPanel.SetActive(true);
-            LeanTween.moveLocalY(finishedPanel, 0f, 1f).setDelay(0.2f).setEase(LeanTweenType.easeOutQuart);
+            LeanTween.moveLocalY(finishedPanel, 0f, 1f).setDelay(0.5f).setEase(LeanTweenType.easeOutQuart);
         }
     }
 
@@ -146,5 +147,15 @@ public class GameManager : MonoBehaviour
             list[i] = list[randomIndex];
             list[randomIndex] = temp;
         }
+    }
+
+    public void ReturnClicked()
+    {
+        LeanTween.alpha(finishedPanel.GetComponent<RectTransform>(), 0f, 1f).setOnComplete(ReturnToMenu);
+    }
+
+    void ReturnToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
