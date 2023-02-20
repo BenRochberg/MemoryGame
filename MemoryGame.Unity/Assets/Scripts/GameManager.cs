@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public List<Sprite> gamePuzzles = new List<Sprite>();
 
+    public GameObject finishedPanel;
+
     private bool firstGuess, secondGuess;
 
     private int countGuesses;
@@ -34,6 +36,7 @@ public class GameManager : MonoBehaviour
         AddGamePuzzles();
         Shuffle(gamePuzzles);
         gameGuesses = gamePuzzles.Count / 2;
+        finishedPanel.SetActive(false);
     }
 
     void GetButtons()
@@ -124,10 +127,13 @@ public class GameManager : MonoBehaviour
     void CheckIfTheGameIsFinished()
     {
         countCorrectGuesses++;
+        
         if (countCorrectGuesses == gameGuesses)
         {
             Debug.Log("Game Finished!");
             Debug.Log("It took you " + countGuesses + " many guess(es) to finish the game!");
+            finishedPanel.SetActive(true);
+            LeanTween.moveLocalY(finishedPanel, 0f, 1f).setDelay(0.2f).setEase(LeanTweenType.easeOutQuart);
         }
     }
 
