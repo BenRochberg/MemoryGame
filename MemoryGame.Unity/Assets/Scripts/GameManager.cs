@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        puzzles = Resources.LoadAll<Sprite>("Sprites");
+        puzzles = Resources.LoadAll<Sprite>("Level1Sprites");
     }
     private void Start()
     {
