@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     private string firstGuessPuzzle, secondGuessPuzzle;
 
-    private void Awake()
+    private void Awake()  //This function loads each image in the "Level1Sprites" folder as a puzzle (card).
     {
         puzzles = Resources.LoadAll<Sprite>("Level1Sprites");
     }
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         finishedPanel.SetActive(false);
     }
 
-    void GetButtons()
+    void GetButtons()  //Each Card has the tag "PuzzleButton" and when the buttons spawn in, they use a blank card image. The LeanTween line is a fading in animation.
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag("PuzzleButton");
 
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void AddListeners()
+    void AddListeners()  //Checks when a card is clicked
     {
         foreach (Button btn in btns)
         {
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PickAPuzzle()
+    public void PickAPuzzle()  //Picking you first card sets the firstGuess bool to true, sets it as the currentSelectedGameObject, and changes the blank image to the image it pulled from the folder. Same with the second Guess.
     {        
         if (!firstGuess)
         {
@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    IEnumerator CheckIfThePuzzlesMatch()
+    IEnumerator CheckIfThePuzzlesMatch()  //If the cards have the same image, set both cards interactability and fade them out.
     {
         yield return new WaitForSeconds(1f);
 
@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
 
             CheckIfTheGameIsFinished();
         }
-        else
+        else  //If the card don't have the same image, change the images of the cards back to the blank card image.
         {
             yield return new WaitForSeconds(0.5f);
             btns[firstGuessIndex].image.sprite = bgImage;
@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
         firstGuess = secondGuess = false;
     }
 
-    void CheckIfTheGameIsFinished()
+    void CheckIfTheGameIsFinished()  //If the game is finished, set the finishedPanel to true and slide it in from the bottom.
     {
         countCorrectGuesses++;
         
@@ -138,7 +138,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Shuffle(List<Sprite> list)
+    void Shuffle(List<Sprite> list)  //When the cards spawn in, it will randomly shuffle where each card is every game.
     {
         for (int i = 0; i < list.Count; i++)
         {
@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ReturnClicked()
+    public void ReturnClicked()  //If the Return to Main Menu Button is clicked, lower the Alpha of the finishedPanel to 0 and load the MainMenu scene.
     {
         LeanTween.alpha(finishedPanel.GetComponent<RectTransform>(), 0f, 1f).setOnComplete(ReturnToMenu);
     }
