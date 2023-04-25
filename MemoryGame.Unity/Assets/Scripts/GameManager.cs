@@ -28,7 +28,17 @@ public class GameManager : MonoBehaviour
 
     private void Awake()  //This function loads each image in the "Level1Sprites" folder as a puzzle (card).
     {
-        puzzles = Resources.LoadAll<Sprite>("Level1Sprites");
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+
+        if (sceneName == "GameScene1")
+        {
+            puzzles = Resources.LoadAll<Sprite>("Level1Sprites");
+        }
+        else if (sceneName == "GameScene2")
+        {
+            puzzles = Resources.LoadAll<Sprite>("Level2Sprites");
+        }
     }
     private void Start()
     {
@@ -149,13 +159,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ReturnClicked()  //If the Return to Main Menu Button is clicked, lower the Alpha of the finishedPanel to 0 and load the MainMenu scene.
-    {
-        LeanTween.alpha(finishedPanel.GetComponent<RectTransform>(), 0f, 1f).setOnComplete(ReturnToMenu);
-    }
+    public void ReturnClicked() => LeanTween.alpha(finishedPanel.GetComponent<RectTransform>(), 0f, 1f).setOnComplete(ReturnToMenu);
+    void ReturnToMenu() => SceneManager.LoadScene("MainMenu");
 
-    void ReturnToMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
 }
