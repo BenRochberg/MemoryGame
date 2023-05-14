@@ -58,6 +58,11 @@ public class LevelManager : MonoBehaviour
         SetUpForNextLevel();
         LeanTween.alpha(levelSelectPanel.GetComponent<RectTransform>(), 0f, completeTime).setDelay(0.5f).setOnComplete(GoToThree);
     }
+    public void PlayFourClicked()  //When you click on the Play Button on the Main Menu, it sets both Buttons' interability to false and turns down each GameObject and Buttons Alpha to 0. The setOnComplete function sends the player to the second scene (GameScene) once the animations complete.
+    {
+        SetUpForNextLevel();
+        LeanTween.alpha(levelSelectPanel.GetComponent<RectTransform>(), 0f, completeTime).setDelay(0.5f).setOnComplete(GoToFour);
+    }
     public void Back()
     {
         SetUpForNextLevel();
@@ -66,5 +71,6 @@ public class LevelManager : MonoBehaviour
     void GoToOne() => SceneManager.LoadScene("GameScene1");
     void GoToTwo() => SceneManager.LoadScene("GameScene2");
     void GoToThree() => SceneManager.LoadScene("GameScene3");
+    void GoToFour() => SceneManager.LoadScene("GameScene4");
     void GoToMenu() => SceneManager.LoadScene("MainMenu");
 }
