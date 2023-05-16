@@ -51,6 +51,34 @@ public class GameManager : MonoBehaviour
         {
             puzzles = Resources.LoadAll<Sprite>("Level5Sprites");
         }
+        else if (sceneName == "GameScene6")
+        {
+            puzzles = Resources.LoadAll<Sprite>("Level6Sprites");
+        }
+        else if (sceneName == "GameScene7")
+        {
+            puzzles = Resources.LoadAll<Sprite>("Level7Sprites");
+        }
+        else if (sceneName == "GameScene8")
+        {
+            puzzles = Resources.LoadAll<Sprite>("Level8Sprites");
+        }
+        else if (sceneName == "GameScene9")
+        {
+            puzzles = Resources.LoadAll<Sprite>("Level9Sprites");
+        }
+        else if (sceneName == "GameScene10")
+        {
+            puzzles = Resources.LoadAll<Sprite>("Level10Sprites");
+        }
+        else if (sceneName == "GameScene11")
+        {
+            puzzles = Resources.LoadAll<Sprite>("Level11Sprites");
+        }
+        else if (sceneName == "GameScene12")
+        {
+            puzzles = Resources.LoadAll<Sprite>("Level12Sprites");
+        }
     }
     private void Start()
     {
