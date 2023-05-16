@@ -1531,7 +1531,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bb3396325c3b1c943be8eaefa0f0ae10, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4cbc4c7177b888d41bf70f10309c8d9e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2538,7 +2538,7 @@ GameObject:
   - component: {fileID: 1168130462}
   - component: {fileID: 1168130461}
   m_Layer: 5
-  m_Name: ObjectsLevelPanel
+  m_Name: FurnitureLevelPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2588,7 +2588,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bb3396325c3b1c943be8eaefa0f0ae10, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 90cdf171f41a41f45a33d20f5f57c8f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
